@@ -1,0 +1,84 @@
+<html>
+<body>
+<p>Where are you sending to?.</p>
+<div class="dropdown">
+ <label>Enter the postcode</postcode>
+  <select id="myDropdown">
+  <option value="6280">6280</option>
+  <option value="6281">6281</option>
+  <option value="6282">6282</option>
+  <option value="6283">6283</option>
+  </select>
+ <div>
+  <p>what is the shipping group?</p>
+  Standard: <input type="checkbox" id="standard" onclick="checkGroup()"><br>
+  Bulky: <input type="checkbox" id="Bulky"
+onclick="checkGroup()">
+  </div>
+  <div>
+   <p>Estimating Price:</p>
+    <label>Shipping price</label>
+  <input type="text" id="txtPrice" name="txtPrice"/><br>
+  <label>Quantity</label>
+  <input type="text" id="txtQuantity" name="txtQuantity"/><br><br>
+     <label>Shipping amount:</label>
+   <input type="text" id="txtAmount" name="txtAmount"/><br><br>
+   <button onclick="priceEstimation()">Calculate amount</button>
+ </div>
+ </body>
+<script>
+  function dropDown(){
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+function checkGroup() {
+    // Get the checkbox
+ var Standard = document.getElementById("standard");
+  if (Standard.checked == true){
+  alert("Standard Items are anything that can be sent by post.");
+  }
+ var Bulky = document.getElementById("Bulky");
+ var text = document.getElementById("text");
+  if (Bulky.checked == true){
+
+    var e = document.getElementById("myDropdown");
+    var value = e.options[e.selectedIndex].value;
+    var price =  paymentMapping(value);
+    document.getElementById("txtPrice").value = price;
+   }
+}
+
+function paymentMapping(postcode){
+  var price;
+  switch(postcode){
+    case "6280":
+      price = 10;
+      break;
+    case "6281"  :
+      price = 15;
+      break;
+    case "6282":
+      price = 20;
+      break;
+    case "6283":
+      price = 25;
+      break;
+  }
+  return price;
+}
+
+
+/* function to estimate calculation*/
+  function priceEstimation(){
+  var price = document.getElementById("txtPrice").value;
+  var qty = document.getElementById("txtQuantity").value;
+  var amount = price * qty;
+    document.getElementById("txtAmount").value = amount;
+}
+
+
+
+  </script>
+
+ </div>
+</div>
