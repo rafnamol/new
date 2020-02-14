@@ -1,1 +1,1 @@
-# new
+# Shipping Price estimator 'Shopify'
